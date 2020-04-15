@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Avis } from '../Models/avis.model';
 import { Subject, from } from 'rxjs';
-import * as firebase from 'firebase';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
@@ -22,7 +21,7 @@ export class AvisService {
     // firebase.database().ref('/avis').set(this.avis);
   }
   getAvis() {
-      this.http.get(environment.URL + '/api/avis').subscribe(
+      this.http.get(environment.URL + '/avis').subscribe(
         (data: Avis[]) => {
           if (data) {
             this.avis = data;
@@ -35,7 +34,7 @@ export class AvisService {
       }
   getOneAvis(id: string) {
     return new Promise((resolve, reject) => {
-      this.http.get(environment.URL + '/api/avis/' + id).subscribe(
+      this.http.get(environment.URL + '/avis/' + id).subscribe(
         (response) => {
           resolve(response);
           console.log(resolve(response));
@@ -49,7 +48,7 @@ export class AvisService {
   }
   createNewAvis(avis: Avis) {
     return new Promise((resolve, reject) => {
-      this.http.post(environment.URL + '/api/avis', avis).subscribe(
+      this.http.post(environment.URL + '/avis', avis).subscribe(
         (response) => {
           resolve(response);
           console.log(resolve(response));
@@ -63,7 +62,7 @@ export class AvisService {
   }
   removeAvis(avis: Avis) {
     return new Promise((resolve, reject) => {
-      this.http.delete(environment.URL + '/api/avis/' + avis._id).subscribe(
+      this.http.delete(environment.URL + '/avis/' + avis._id).subscribe(
         (response) => {
           resolve(response);
           console.log(resolve(response));
@@ -79,7 +78,7 @@ export class AvisService {
   }
   modifyAvis(avis: Avis) {
     return new Promise((resolve, reject) => {
-      this.http.put(environment.URL + '/api/avis/' + avis._id, avis).subscribe(
+      this.http.put(environment.URL + '/avis/' + avis._id, avis).subscribe(
         (response) => {
           resolve(response);
           // console.log(resolve(response));

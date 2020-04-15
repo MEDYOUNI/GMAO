@@ -28,7 +28,7 @@ export class LieuService {
     this.siteSubject.next(this.site.slice());
   }
   getSite() {
-      this.http.get(environment.URL + '/api/site').subscribe(
+      this.http.get(environment.URL + '/site').subscribe(
         (data: Site[]) => {
           if (data) {
             this.site = data;
@@ -41,7 +41,7 @@ export class LieuService {
       }
   getOneSite(id: string) {
     return new Promise((resolve, reject) => {
-      this.http.get(environment.URL + '/api/site/' + id).subscribe(
+      this.http.get(environment.URL + '/site/' + id).subscribe(
         (response) => {
           resolve(response);
           console.log(resolve(response));
@@ -55,7 +55,7 @@ export class LieuService {
   }
   createNewSite(site: Site) {
     return new Promise((resolve, reject) => {
-      this.http.post(environment.URL + '/api/site', site).subscribe(
+      this.http.post(environment.URL + '/site', site).subscribe(
         (response) => {
           resolve(response);
           console.log(resolve(response));
@@ -69,7 +69,7 @@ export class LieuService {
   }
   removeSite(site: Site) {
     return new Promise((resolve, reject) => {
-      this.http.delete(environment.URL + '/api/site/' + site._id).subscribe(
+      this.http.delete(environment.URL + '/site/' + site._id).subscribe(
         (response) => {
           resolve(response);
           console.log(resolve(response));
@@ -85,7 +85,7 @@ export class LieuService {
   }
   modifySite(site: Site) {
     return new Promise((resolve, reject) => {
-      this.http.put(environment.URL + '/api/site/' + site._id, site).subscribe(
+      this.http.put(environment.URL + '/site/' + site._id, site).subscribe(
         (response) => {
           resolve(response);
           // console.log(resolve(response));
@@ -105,7 +105,7 @@ export class LieuService {
     this.secteurSubject.next(this.secteur.slice());
   }
   getSecteur() {
-      this.http.get(environment.URL + '/api/secteur').subscribe(
+      this.http.get(environment.URL + '/secteur').subscribe(
         (data: Secteur[]) => {
           if (data) {
             this.secteur = data;
@@ -118,7 +118,7 @@ export class LieuService {
       }
   getOneSecteur(id: string) {
     return new Promise((resolve, reject) => {
-      this.http.get(environment.URL + '/api/secteur/' + id).subscribe(
+      this.http.get(environment.URL + '/secteur/' + id).subscribe(
         (response) => {
           resolve(response);
           console.log(resolve(response));
@@ -132,7 +132,7 @@ export class LieuService {
   }
   createNewSecteur(secteur: Secteur) {
     return new Promise((resolve, reject) => {
-      this.http.post(environment.URL + '/api/secteur', secteur).subscribe(
+      this.http.post(environment.URL + '/secteur', secteur).subscribe(
         (response) => {
           resolve(response);
           console.log(resolve(response));
@@ -146,7 +146,7 @@ export class LieuService {
   }
   removeSecteur(secteur: Secteur) {
     return new Promise((resolve, reject) => {
-      this.http.delete(environment.URL + '/api/secteur/' + secteur._id).subscribe(
+      this.http.delete(environment.URL + '/secteur/' + secteur._id).subscribe(
         (response) => {
           resolve(response);
           console.log(resolve(response));
@@ -162,7 +162,7 @@ export class LieuService {
   }
   modifySecteur(secteur: Secteur) {
     return new Promise((resolve, reject) => {
-      this.http.put(environment.URL + '/api/secteur/' + secteur._id, secteur).subscribe(
+      this.http.put(environment.URL + '/secteur/' + secteur._id, secteur).subscribe(
         (response) => {
           resolve(response);
         },
@@ -181,7 +181,7 @@ export class LieuService {
     this.atelierSubject.next(this.atelier.slice());
   }
   getAtelier() {
-      this.http.get(environment.URL + '/api/atelier').subscribe(
+      this.http.get(environment.URL + '/atelier').subscribe(
         (data: Atelier[]) => {
           if (data) {
             this.atelier = data;
@@ -194,7 +194,7 @@ export class LieuService {
       }
   getOneAtelier(id: string) {
     return new Promise((resolve, reject) => {
-      this.http.get(environment.URL + '/api/atelier/' + id).subscribe(
+      this.http.get(environment.URL + '/atelier/' + id).subscribe(
         (response) => {
           resolve(response);
           console.log(resolve(response));
@@ -208,7 +208,7 @@ export class LieuService {
   }
   createNewAtelier(atelier: Atelier) {
     return new Promise((resolve, reject) => {
-      this.http.post(environment.URL + '/api/atelier', atelier).subscribe(
+      this.http.post(environment.URL + '/atelier', atelier).subscribe(
         (response) => {
           resolve(response);
           console.log(resolve(response));
@@ -222,7 +222,7 @@ export class LieuService {
   }
   removeAtelier(atelier: Atelier) {
     return new Promise((resolve, reject) => {
-      this.http.delete(environment.URL + '/api/atelier/' + atelier._id).subscribe(
+      this.http.delete(environment.URL + '/atelier/' + atelier._id).subscribe(
         (response) => {
           resolve(response);
           console.log(resolve(response));
@@ -238,7 +238,7 @@ export class LieuService {
   }
   modifyAtelier(atelier: Atelier) {
     return new Promise((resolve, reject) => {
-      this.http.put(environment.URL + '/api/atelier/' + atelier._id, atelier).subscribe(
+      this.http.put(environment.URL + '/atelier/' + atelier._id, atelier).subscribe(
         (response) => {
           resolve(response);
           // console.log(resolve(response));
