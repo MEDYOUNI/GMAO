@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <button class="btn btn-default pull-right" (click)="onBack()">Retour</button>
+      <h2>Enregistrer un nouveau secteur</h2>
+      <form [formGroup]="secteurForm" (ngSubmit)="onSaveSecteur()">
+        <div class="form-group">
+            <label for="nom">Nom : </label>
+            <input type="text" class="form-control" id="nom" formControlName="nom">
+          </div>
+        <div class="form-group">
+          <label for="description">Description : </label>
+          <input type="text" class="form-control" id="description" formControlName="description">
+        </div>
+        <div class="form-group">
+          <label for="etat">Etat : </label>
+          <mat-slide-toggle formControlName="etat"></mat-slide-toggle>
+        </div>
+        <div class="form-group">
+          <!-- <label for="site">Site : </label>
+          <input type="text" class="form-control" id="Site" formControlName="site"> -->
+          <!-- <h4>Site</h4> -->
+          <mat-form-field>
+              <mat-label>Site</mat-label>
+                  <mat-select id="site" formControlName="site">
+                      <mat-option *ngFor="let site of sites" [value]="site.nom">{{site.nom}}</mat-option>
+              </mat-select>
+          </mat-form-field>
+        </div>
+        <button class="btn btn-success" [disabled]="secteurForm.invalid" type="submit">Enregistrer</button>
+      </form>
+    </div>
+  </div>
+  
