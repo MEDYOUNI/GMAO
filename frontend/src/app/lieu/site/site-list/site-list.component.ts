@@ -15,9 +15,8 @@ export class SiteListComponent implements OnInit, OnDestroy {
   loading = false;
   siteSubscription: Subscription;
   displayedColumns: string[] = ['etat', 'nom', 'description', 'actions'];
-
   dataSource: Site[];
-  // pour les tests de Git 
+
   constructor(private lieuService: LieuService,
               private router: Router) { }
 
