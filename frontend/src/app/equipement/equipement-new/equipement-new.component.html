@@ -15,13 +15,21 @@
           <input type="text" class="form-control" id="type" formControlName="type">
         </div>
         <div class="form-group">
-          <label for="site">Site :</label>
-          <input type="text" class="form-control" id="site" formControlName="site" >
-        </div>
-        <div class="form-group">
-          <label for="secteur">Secteur :</label>
-          <input type="text" class="form-control" id="secteur" formControlName="secteur">
-        </div>
+          <mat-form-field>
+              <mat-label>Site</mat-label>
+                  <mat-select id="site" formControlName="site">
+                      <mat-option *ngFor="let site of sites" [value]="site.nom">{{site.nom}}</mat-option>
+              </mat-select>
+          </mat-form-field>
+      </div>        
+      <div class="form-group">
+          <mat-form-field>
+              <mat-label>Secteur</mat-label>
+                  <mat-select id="secteur" formControlName="secteur">
+                      <mat-option *ngFor="let secteur of secteurs" [value]="secteur.nom">{{secteur.nom}}</mat-option>
+              </mat-select>
+          </mat-form-field>
+      </div>
         <div class="form-group">
           <label for="zone">Zone :</label>
           <input type="text" class="form-control" id="zone" formControlName="zone">
