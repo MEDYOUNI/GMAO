@@ -3,6 +3,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EquipementService } from 'src/app/services/equipement.service';
 import { Router } from '@angular/router';
 import { Equipement } from 'src/app/models/equipement.model';
+import { Subscription } from 'rxjs';
+import { Site } from 'src/app/models/site.model';
+import { Secteur } from 'src/app/models/secteur.model';
+import { LieuService } from 'src/app/services/lieu.service';
 
 @Component({
   selector: 'app-equipement-new',
@@ -12,14 +16,22 @@ import { Equipement } from 'src/app/models/equipement.model';
 export class EquipementNewComponent implements OnInit {
 
   equipementForm: FormGroup;
+  siteSubscription: Subscription;
+  sites: Site[];
+  secteurSubscription: Subscription;
+  secteurs: Secteur[];
+  
   constructor(private formBuilder: FormBuilder,
               private equipementService: EquipementService,
+              private lieuService: LieuService,
               private router: Router) { }
 
   ngOnInit(): void {
     this.initForm();
   }
   initForm() {
+    this.loadSites();
+    this.loadSecteurs();
     this.equipementForm = this.formBuilder.group(
       {
         nom: ['', Validators.required],
@@ -31,6 +43,24 @@ export class EquipementNewComponent implements OnInit {
         flux: ['', Validators.required]
       }
     );
+  }
+  loadSites() {
+    this.siteSubscription = this.lieuService.siteSubject.subscribe(
+      (site: Site[]) => {
+        this.sites = site;
+      }
+    );
+    this.lieuService.getSite();
+    this.lieuService.emitSite();
+  }
+  loadSecteurs() {
+    this.secteurSubscription = this.lieuService.secteurSubject.subscribe(
+      (secteur: Secteur[]) => {
+        this.secteurs = secteur;
+      }
+    );
+    this.lieuService.getSecteur();
+    this.lieuService.emitSecteur();
   }
   onSaveEquipement() {
     const newEquipement = new Equipement();

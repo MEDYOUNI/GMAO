@@ -19,7 +19,7 @@ export class EquipementService {
   }
 
   getEquipements() {
-      this.http.get(environment.URL + '/api/equipement').subscribe(
+      this.http.get(environment.URL + '/equipement').subscribe(
         (data: Equipement[]) => {
           if (data) {
             this.equipement = data;
@@ -32,7 +32,7 @@ export class EquipementService {
       }
   getOneEquipement(id: string) {
     return new Promise((resolve, reject) => {
-      this.http.get(environment.URL + '/api/equipement/' + id).subscribe(
+      this.http.get(environment.URL + '/equipement/' + id).subscribe(
         (response) => {
           resolve(response);
           console.log(resolve(response));
@@ -46,7 +46,7 @@ export class EquipementService {
   }
   createNewEquipement(equipement: Equipement) {
     return new Promise((resolve, reject) => {
-      this.http.post(environment.URL + '/api/equipement', equipement).subscribe(
+      this.http.post(environment.URL + '/equipement', equipement).subscribe(
         (response) => {
           resolve(response);
           console.log(equipement);
@@ -62,7 +62,7 @@ export class EquipementService {
   }
   removeEquipement(equipement: Equipement) {
     return new Promise((resolve, reject) => {
-      this.http.delete(environment.URL + '/api/equipement/' + equipement._id).subscribe(
+      this.http.delete(environment.URL + '/equipement/' + equipement._id).subscribe(
         (response) => {
           resolve(response);
           console.log(resolve(response));
@@ -78,7 +78,7 @@ export class EquipementService {
   }
   modifyEquipement(equipement: Equipement) {
     return new Promise((resolve, reject) => {
-      this.http.put(environment.URL + '/api/equipement/' + equipement._id, equipement).subscribe(
+      this.http.put(environment.URL + '/equipement/' + equipement._id, equipement).subscribe(
         (response) => {
           resolve(response);
           // console.log(resolve(response));

@@ -5,16 +5,24 @@
         <h2>Liste des équipements</h2>
         <button class="btn btn-primary pull-right" (click)="onCreateNewEquipement()">Nouveau équipement</button>
 
-        <h4>Site</h4>
         <mat-form-field>
             <mat-label>Site</mat-label>
-                <mat-select>
-                    <mat-option *ngFor="let food of foods" [value]="food.value">
-                    {{food.viewValue}}
+                <mat-select (selectionChange)="onChangeSite($event.source.value)">
+                    <mat-option *ngFor="let site of sites" [value]="site.nom">
+                    {{site.nom}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
-      </div>
+      
+        <mat-form-field>
+          <mat-label>Secteur</mat-label>
+              <mat-select (selectionChange)="onChangeSecteur($event.source.value)">
+                  <mat-option *ngFor="let secteur of secteurs" [value]="secteur.nom">
+                  {{secteur.nom}}
+              </mat-option>
+          </mat-select>
+      </mat-form-field>
+  </div>
  
     
     <p class="text-center" *ngIf="dataSource.length <= 0 && !loading">Pas d'équipement en BDD !!!</p>

@@ -19,7 +19,7 @@ export class AuthService {
   createNewUser(email: string, password: string) {
     return new Promise((resolve, reject) => {
       this.http.post(
-        environment.URL + '/api/auth/signup',
+        environment.URL + '/auth/signup',
         { email: email, password: password })
         .subscribe(
           () => {
@@ -42,7 +42,7 @@ export class AuthService {
   signInUser(email: string, password: string) {
     return new Promise((resolve, reject) => {
       this.http.post(
-        environment.URL + '/api/auth/login',
+        environment.URL + '/auth/login',
         { email: email, password: password })
         .subscribe(
           (authData: { token: string, userId: string }) => {
