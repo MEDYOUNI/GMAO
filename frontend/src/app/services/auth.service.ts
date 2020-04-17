@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
-import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -13,8 +12,8 @@ export class AuthService {
   token: string;
   userId: string;
 
-  constructor(private router: Router,
-              private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   createNewUser(email: string, password: string) {
     return new Promise((resolve, reject) => {

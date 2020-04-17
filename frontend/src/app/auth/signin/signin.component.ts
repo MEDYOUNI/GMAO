@@ -37,5 +37,11 @@ export class SigninComponent implements OnInit {
       (error) => {this.errorMessage = error; }
     );
   }
+  ConnectUser(email: string, password: string) {
+    this.authService.signInUser(email, password).then(
+      () => {this.router.navigate(['/avisTable']); },
+      (error) => {this.errorMessage = error; }
+    );
+  }
 
 }
