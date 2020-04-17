@@ -23,13 +23,6 @@ describe('SignupComponent', () => {
     });
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SignupComponent);
-    component = fixture.componentInstance;
-    component.ngOnInit();
-    fixture.detectChanges();
-  });
-
   it('should create', () => {
      expect(component).toBeTruthy();
   });

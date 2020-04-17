@@ -5,9 +5,8 @@ import { AuthService } from './auth.service';
 
 describe('AuthService', () => {
   let service: AuthService;
-  // let http: HttpClient;
+// ici il faut importer HttpClientModule(ou HttpClientTestingModule), sinon HttpClient ne fonctionnera pas car Angular ne le sait pas
 
-  // ici il faut importer HttpClientModule(ou HttpClientTestingModule), sinon HttpClient ne fonctionnera pas car Angular ne le sait pas
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
@@ -20,3 +19,5 @@ describe('AuthService', () => {
       expect(service).toBeTruthy();
   });
 });
+
+  
