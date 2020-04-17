@@ -1,6 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 
 import { SigninComponent } from './signin.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormBuilder } from '@angular/forms';
 
 describe('SigninComponent', () => {
   let component: SigninComponent;
@@ -8,7 +11,9 @@ describe('SigninComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SigninComponent ]
+      declarations: [ SigninComponent ],
+      imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([])],
+      providers: [FormBuilder]
     })
     .compileComponents();
   }));
@@ -20,6 +25,20 @@ describe('SigninComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+     expect(component).toBeTruthy();
   });
+  it('form invalid when empty', () => {
+    expect(component.signInForm.valid).toBeFalsy();
+  });
+  // it('Exist user', fakeAsync(() => {
+  //     component.signInForm.controls['email'].setValue("test@test.com");
+  //     component.signInForm.controls['password'].setValue("123456");
+  //     expect(component.onSubmit()).toBeTruthy();
+  //   }));
+  it('Add bad format user', fakeAsync(() => {
+      component.signInForm.controls['email'].setValue("test");
+      component.signInForm.controls['password'].setValue("123456");
+      expect(component.onSubmit()).toBeFalsy();
+    }));
+
 });

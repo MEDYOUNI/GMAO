@@ -6,10 +6,12 @@ describe('workspace-project App', () => {
 
   beforeEach(() => {
     page = new AppPage();
+    browser.pause();
   });
 
   it('should display welcome message', () => {
     page.navigateTo();
+    browser.pause();
     expect(page.getTitleText()).toEqual('gmao app is running!');
   });
 
